@@ -85,7 +85,8 @@ end
 # Exercise 5.
 def print(students)
   students.each_with_index do |student, index|
-    puts "#{index + 1}. "\ # <- to use the "\" character to split the string requires quotes on each line to allow indenting
+    # to use the "\" character to split the string requires quotes on each line to allow indenting
+    puts "#{index + 1}. "\
           "#{student[:name]} "\
           "(#{student[:cohort]} cohort). "\
           "Enjoys #{student[:hobbies]}. "\
