@@ -18,7 +18,7 @@ def input_students
   while !name.empty? do
     # add the student hash to the array
     students << {name: name,
-                cohort: :november,
+                cohort: cohort.to_sym,
                 nationality: nationality,
                 hobbies: hobbies,
                 height: height}
@@ -83,6 +83,19 @@ end
 # end
 
 # Exercise 5.
+# def print(students)
+#   students.each_with_index do |student, index|
+#     # to use the "\" character to split the string requires quotes on each line to allow indenting
+#     puts "#{index + 1}. "\
+#           "#{student[:name]} "\
+#           "(#{student[:cohort]} cohort). "\
+#           "Enjoys #{student[:hobbies]}. "\
+#           "Is #{student[:height]} tall. "\
+#           "Is #{student[:nationality]}."
+#   end
+# end
+
+# Exercise 6.
 def print(students)
   students.each_with_index do |student, index|
     # to use the "\" character to split the string requires quotes on each line to allow indenting
@@ -91,7 +104,7 @@ def print(students)
           "(#{student[:cohort]} cohort). "\
           "Enjoys #{student[:hobbies]}. "\
           "Is #{student[:height]} tall. "\
-          "Is #{student[:nationality]}."
+          "Is #{student[:nationality]}.".center(100)
   end
 end
 
