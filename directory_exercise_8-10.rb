@@ -2,8 +2,10 @@ def input_students
   puts "Please enter the names of the first student"
   puts "To finish, just hit return twice"
   students = []
-  name = gets.chomp
-  
+  name = gets.delete("\n") # <- exercise 10
+  # name = gets.strip # also works instead of chomp
+  # name = gets.chomp
+
   months = [
     :Jan,
     :Feb,
