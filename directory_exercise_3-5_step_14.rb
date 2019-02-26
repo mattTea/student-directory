@@ -23,7 +23,13 @@ def show_students
 end
 
 def save_students
-  file = File.open("students.csv", "w")
+  puts "Please enter filename to save students to."
+  filename = STDIN.gets.chomp
+  if filename == "" || !File.exists?(filename)
+    puts "Could not find that file, students saved to 'students.csv' instead."
+    filename = "students.csv"
+  end
+  file = File.open(filename, "w")
   @students.each do |student|
     student_data = [student[:name], student[:cohort]]
     csv_line = student_data.join(",")
@@ -36,7 +42,13 @@ def add_students_to_array(students_hash)
   @students << students_hash
 end
 
-def load_students(filename = "students.csv") # <- default arg if not provided
+def load_students(filename = "")
+  puts "Please enter filename to load students from."
+  filename = STDIN.gets.chomp
+  if filename == "" || !File.exists?(filename)
+    puts "Could not find that file, using 'students.csv' instead."
+    filename = "students.csv"
+  end
   file = File.open(filename, "r")
   file.readlines.each do |line|
     name, cohort = line.chomp.split(",")
@@ -60,14 +72,24 @@ end
 def user_option(selection)
   case selection
   when "1"
+    puts "You selected '1' - input students"
+    puts "--------------------------------"
     input_students
   when "2"
+    puts "You selected '2' - show students"
+    puts "--------------------------------"
     show_students
   when "3"
+    puts "You selected '3' - save students"
+    puts "--------------------------------"
     save_students
   when "4"
+    puts "You selected '4' - load students"
+    puts "--------------------------------"
     load_students
   when "9"
+    puts "You selected '9' - exit program"
+    puts "--------------------------------"
     exit
   else
     puts "I don't know what you meant, please try again."
